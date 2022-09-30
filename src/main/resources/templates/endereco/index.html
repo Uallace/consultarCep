@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+	<meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1?>
+        <title>Pesquisa CEP</title>	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link href="css/cep.css" rel="stylesheet">
+	</head>
+    <body>
+	
+	<h3>PESQUISANDO CEP E CADASTRANDO ENDERECO COM SPRING BOOT </h3>
+        <hr>
+	
+	<div class="container">
+
+	<div class="box">
+	
+	
+	<form action="/endereco/create" method="POST">
+	
+	<fieldset>
+	<legend>Endereco</legend>
+	 
+	<div class="row">
+	 <div class="mb-3">
+	  <input type="text" name="cep" id="cep" placeholder="Cep" required class="form-control">
+	 </div>
+	
+	 <div class="mb-3">
+    	  <input type="text" placeholder="Logradouro" name="logradouro" required id="logradouro" class="form-control">
+	 </div>
+
+	 <div class="mb-3">
+    	  <input type="text" placeholder="Numero"name="numero" id="numero" required class="form-control">
+  	 </div>
+
+	<div class="mb-3">
+   	 <input type="text" placeholder="Complemento" name="complemento" id="complemento" class="form-control">
+  	</div>
+
+	<div class="mb-3">
+    	 <input type="text" placeholder="Bairro"  name="bairro" required class="form-control" id="bairro">
+	</div>
+
+	<div class="mb-3">
+	 <input type="text" placeholder="Localidade" id="localidade" required name="localidade" class="form-control">
+  	</div>
+
+	<div class="mb-3">
+	 <input type="text" placeholder="UF" id="uf" required name="uf" class="form-control">
+  	</div>
+	
+	</div>
+
+	<button type="submit" class="btn btn-primary" value="Cadastrar" id="cadastrar">Cadastrar</button>
+	<fieldset>
+	</form>
+	
+	<div class="mb-3">
+		<div id="loading" class="spinner-border text-primary" style="display:none;" role="status">
+  	  	<span class="visually-hidden">Carregando...</span></div>
+	</div>
+
+	</div>
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>
+	
+
+            $("#cep").on("change", function(){
+
+                var loading = $("#loading");
+
+                var cep = $("#cep").val().replace(/[^0-9]/g,'');
+
+                loading.show();
+
+                if(cep !== "" && cep.length == 8){
+
+                    $.ajax({
+                        url: "https://viacep.com.br/ws/"+cep+"/json/",
+                        type: "GET",
+                        dataType: "json",
+                        success: function (data) {
+
+                            if(data.erro !== undefined){
+
+                                alert("CEP inválido ou não encontrado");
+
+                            }else{
+
+                                $("#logradouro").val(data.logradouro);
+                                $("#complemento").val(data.complemento);
+                                $("#bairro").val(data.bairro);
+                                $("#localidade").val(data.localidade);
+                                $("#uf").val(data.uf);
+                                $("#unidade").val(data.unidade);
+                            }
+                        },
+
+                        error: function(data){
+                            alert("Algum erro ocorreu, consulte o log.");
+                        },
+
+                        complete: function(){
+                            loading.hide();
+                        }
+                    });
+
+                }else{
+
+                    alert("CEP deve conter 8 digitos");
+		    loading.hide();
+                }
+            });
+
+        </script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>

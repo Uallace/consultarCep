@@ -1,0 +1,20 @@
+h3{
+	text-align: center;
+	color: #0824ff;
+}
+
+fieldset
+{
+  width:300px;
+  height:250px;
+}
+
+legend
+{
+  font-style:bold;
+  font-family: "Segoe UI";
+}
+
+.spinner-border{
+	margin-top: 5px;	
+}
