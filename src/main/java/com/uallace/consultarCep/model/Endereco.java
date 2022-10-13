@@ -14,6 +14,7 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id_endereco;
+
     public Integer getId_endereco() {
         return id_endereco;
     }
@@ -82,6 +83,6 @@ public class Endereco {
     }
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
-    }
-    
+    }    
+
 }

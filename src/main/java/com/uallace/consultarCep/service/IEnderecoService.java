@@ -6,5 +6,4 @@ import com.uallace.consultarCep.model.Endereco;
 
 public interface IEnderecoService {
     public ArrayList<Endereco> listarTodos();
-    public Endereco criar(Endereco endereco);
 }

@@ -2,17 +2,19 @@ package com.uallace.consultarCep.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.uallace.consultarCep.model.Cliente;
 import com.uallace.consultarCep.model.Endereco;
-import com.uallace.consultarCep.service.EnderecoService;
+import com.uallace.consultarCep.service.ClienteService;
 
 @Controller
 public class IndexController {
     
     @Autowired
-    EnderecoService service;
+    ClienteService cliService;
 
     @GetMapping("/")
     public String index()
@@ -21,8 +23,9 @@ public class IndexController {
     }
 
     @PostMapping("/endereco/create")
-    public String create(Endereco endereco){
-        service.criar(endereco);
+    public String create(Cliente cliente, Endereco endereco){
+        cliente.setEndereco(endereco);
+        cliService.criarCliente(cliente);
         return "redirect:/";
     }
 

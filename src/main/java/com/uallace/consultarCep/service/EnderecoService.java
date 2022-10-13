@@ -20,14 +20,5 @@ public class EnderecoService implements IEnderecoService{
         // TODO Auto-generated method stub
         return (ArrayList<Endereco>)dao.findAll();
     }
-
-    @Override
-    public Endereco criar(Endereco endereco) {
-        // TODO Auto-generated method stub
-        if(endereco != null){
-            return dao.save(endereco);
-        }
-        return null;
-    }
     
 }
