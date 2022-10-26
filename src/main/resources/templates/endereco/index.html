@@ -1,100 +1,55 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="pt-br"></html>
-
-<head>
-	<meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1?>
-	<title>Cadastrar cliente e endereco</title>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-	<link rel="stylesheet" href="css/cep.css">
-</head>
-
-<body>
-
-	<h3>PESQUISANDO CEP E CADASTRANDO ENDERECO COM SPRING BOOT </h3>
-	<hr>
-
-	<div class="container">
+<div th:replace="compartilhada/topo"></div>
 
 		<div class="row">
-			<div class="col-md-12">
-				
-				<form action="/endereco/create" method="POST">
+			<form id="form" action="/endereco/create" method="POST">
 
-					<fieldset>
-						<legend>Cadastro de Cliente</legend>
+				<fieldset>
+					<legend>Cadastro de Cliente</legend>
 
-						<div class="form-group">
-							<input type="text" name="nome" placeholder="Nome" required class="form-control">
-						</div>
+					<div class="form-group">
+						<input type="text" name="nome" placeholder="Nome" required class="form-control">
+					</div>
 
-						<div class="form-group">
-							<input type="email" placeholder="Email" name="email" required 
-								class="form-control">
-						</div>
+					<div class="form-group">
+						<input type="email" placeholder="Email" name="email" required class="form-control">
+					</div>
 
-						<div class="form-group">
-							<input type="text" name="cep" id="cep" placeholder="Cep" required class="form-control">
-						</div>
+					<div class="form-group">
+						<input type="text" name="cep" id="cep" placeholder="Cep" required class="form-control">
+					</div>
 
-						<div class="form-group">
-							<input type="text" placeholder="Logradouro" name="logradouro" required id="logradouro"
-								class="form-control">
-						</div>
+					<div class="form-group">
+						<input type="text" placeholder="Logradouro" name="logradouro" required id="logradouro"
+							class="form-control">
+					</div>
 
-						<div class="form-group">
-							<input type="text" placeholder="Numero" name="numero" id="numero" required
-								class="form-control">
-						</div>
+					<div class="form-group">
+						<input type="text" placeholder="Numero" name="numero" id="numero" required class="form-control">
+					</div>
 
-						<div class="form-group">
-							<input type="text" placeholder="Complemento" name="complemento" id="complemento"
-								class="form-control">
-						</div>
+					<div class="form-group">
+						<input type="text" placeholder="Complemento" name="complemento" id="complemento"
+							class="form-control">
+					</div>
 
-						<div class="form-group">
-							<input type="text" placeholder="Bairro" name="bairro" required class="form-control"
-								id="bairro">
-						</div>
+					<div class="form-group">
+						<input type="text" placeholder="Bairro" name="bairro" required class="form-control" id="bairro">
+					</div>
 
-						<div class="form-group">
-							<input type="text" placeholder="Localidade" id="localidade" required name="localidade"
-								class="form-control">
-						</div>
+					<div class="form-group">
+						<input type="text" placeholder="Localidade" id="localidade" required name="localidade"
+							class="form-control">
+					</div>
 
-						<div class="form-group">
-							<input type="text" placeholder="UF" id="uf" required name="uf" class="form-control">
-						</div>
+					<div class="form-group">
+						<input type="text" placeholder="UF" id="uf" required name="uf" class="form-control">
+					</div>
 
-						<button type="submit" class="btn btn-primary" value="Cadastrar"
-							id="cadastrar">Cadastrar</button>
+					<button type="submit" class="btn btn-primary" value="Cadastrar" id="cadastrar">Cadastrar</button>
 
-
-						<fieldset>
-				</form>
-
-			</div>
-
-		</div>
-	
-		<div id="loading" class="spinner-border text-primary" style="display:none;" role="status">
-			<span class="visually-hidden">Carregando...</span>
+				</fieldset>
+			</form>
 		</div>
 
-	</div>
 
-		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-		crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="js/cep.js"></script>
-
-</body>
-
-</html>
+	<div th:replace="compartilhada/rodape"></div>

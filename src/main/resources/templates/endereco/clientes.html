@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+
+<head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=iso-8859-1?>
+    <title>Cadastrar cliente e endereco</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="table-responsive" id="table-clientes">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"
+            style="border:none;display:block;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>EMAIL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="clientes : ${cliente}">
+                    <td th:text="${clientes.id_cliente}"></td>
+                    <td th:text="${clientes.nome}"></td>
+                    <td th:text="${clientes.email}"></td>
+                    <td th:text="${clientes.endereco.cep}"></td>
+                    <td>
+                        <button class="btn btn-primary"><a style="color:#fff;text-decoration:none;font-size: 0.8rem;"
+                                th:href="@{'/administradores/clientes/conta/' + ${clientes.id_cliente}}">Ver
+                                dados</button>
+                     </td>
+                     <td>          
+                        <button class="btn btn-primary"><a style="color:#fff;text-decoration:none;font-size: 0.8rem;"
+                                th:onclick="'if(confirm(\'Confirma ?\')) { window.location.href = \'' + @{/administradores/clientes/{id}(id=${clientes.id_cliente})} + '/delete\' } '">Excluir</button>
+                        <br>
+                    </td>
+                </tr>
+            </tbody>
+            <div th:if="${erroo != null}" th:text="${erroo}" class="alert alert-danger" role="alert"></div>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>
